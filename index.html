@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>task4</title>
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+	<div id="wrapper" ng-controller="MainController as main">
+		{{main.getBla()}}
+		<header>1</header>
+		<main>
+			<tasks></tasks>
+			<new-task></new-task>
+		</main>
+	</div>
+
+
+
+	<!-- <new-task></new-task> -->
+
+
+
+	<script src="js/module/main.js"></script>
+	<script src="js/module/task.module.js"></script>
+
+	<script src="js/controller/main.controller.js"></script>
+	<script src="js/controller/newtask.controller.js"></script>
+	<script src="js/controller/tasks.controller.js"></script>
+
+	<script src="js/directive/newtask.directive.js"></script>
+	<script src="js/directive/tasks.directive.js"></script>
+	<!-- <script src="js/directive/composeEmail.directive.js"></script> -->
+</body>
+</html>

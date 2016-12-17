@@ -1,0 +1,30 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: #2e3436;
+}
+
+
+#wrapper > main{
+	display: flex;
+}
+
+.task_container{
+	/*min-width: 190px;*/
+
+}
+.new_task{
+	width: 15vw;
+	min-width: 150px;
+	padding: 0.5em;
+	text-align: center;
+	background: #272c2d;
+	color: #ccc;
+	cursor: pointer;
+}
+.new_task:hover{
+	background: #babdb6;
+	color: #555;
+}
