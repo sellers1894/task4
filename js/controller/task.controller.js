@@ -13,6 +13,7 @@
 		vm.editTitle = editTitle;
 		vm.addItem = addItem;
 		vm.editItemTitle = editItemTitle;
+		vm.deleteItem = deleteItem;
 
 		function editTitle(id){
 			var name = prompt("Тест", vm.tasks.tasks[id].name);
@@ -33,12 +34,16 @@
 		}
 
 		function editItemTitle(parent_id, id){
-			console.log(parent_id);
 			var name = prompt("Тест", vm.tasks.tasks[parent_id].items[id].name);
 			if (name){
 				vm.tasks.tasks[parent_id].items[id].name = name;
 				dataservice.update();
 			}
+		}
+
+		function deleteItem(parent_id, id){
+			vm.tasks.tasks[parent_id].items.splice(id, 1);
+			dataservice.update();
 		}
 	}
 })();
