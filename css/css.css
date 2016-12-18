@@ -5,6 +5,9 @@
 body{
 	background: #2e3436;
 }
+.clear{
+	clear:both;
+}
 
 
 #wrapper > main{
@@ -41,11 +44,31 @@ body{
 	/*padding: 0.5em;*/
 	margin: 0 0.5em 0.5em 0;
 	background: #babdb6;
+	word-wrap: break-word;
 }
+
+
 .task > button{
 	float: right;
 }
 
+.task_blocks{
+	margin: 0.5em 0;
+}
+
 .task_blocks > button{
 	width: 100%;
+}
+
+.task_item{
+	display: flex;
+}
+
+.task_item > #title{
+	width: 70%;
+	height: 1.5em;
+	overflow: hidden;
+}
+.task_item > #delete, .task_item > #edit{
+	width: 15%;
 }

@@ -1,10 +1,17 @@
 <div class="task">
-	<span>{{$index+1}})</span>
-	<span>{{task_block.name}}</span>
+	<span>{{$index+1}})&nbsp;{{task_block.name}}</span>
 	<button ng-click="Task.deleteTask($index)">&#10060;</button>
 	<button ng-click="Task.editTitle($index)">&#128394;</button>
+	<div class="clear"></div>
+	<hr>
 	<div class="task_blocks">
-		<div class="task_item">1</div>
-		<button ng-click="Task.add($index)">Добавить</button>
+		<div ng-repeat="task_item in task_block.items track by $index" class="task_item">
+			<button id="title">{{$index+1}}.&nbsp;{{task_item.name}}</button>
+			<button id="edit" ng-click="Task.editItemTitle($parent.$index, $index)">&#128394;</button>
+			<button id="delete" ng-click="Task.deleteItem($parent.$index, $index)">&#10060;</button>
+			<div class="clear"></div>
+			<hr>
+		</div>
+		<button ng-click="Task.addItem($index)">Добавить</button>
 	</div>
 </div>
