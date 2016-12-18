@@ -1,7 +1,8 @@
 (function() {
 
   angular.module('app', [
-  	'app.task'
+  	'app.task',
+  	'app.service'
 ]);
 
 })();

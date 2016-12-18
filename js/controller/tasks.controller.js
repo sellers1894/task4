@@ -5,16 +5,11 @@
 	.module('app')
 	.controller('TasksController', TasksController);
 
-	function TasksController(){
-		var vm = this;
-		vm.bla = 'hi';
-		vm.getBla = getBla;
+	TasksController.$inject = ['dataservice'];
 
-		function getBla(){
-			var db = openDatabase("ToDo", "0.1", "A list of to do items.", 200000);
-			if (!db)
-				return "err";
-			return "ok!";
-		}
+	function TasksController(dataservice){
+		var vm = this;
+		vm.tasks = dataservice.getTasks();
+		console.log(vm.tasks);
 	}
 })();

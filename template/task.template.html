@@ -1,0 +1,10 @@
+<div class="task">
+	<span>{{$index+1}})</span>
+	<span>{{task_block.name}}</span>
+	<button ng-click="Task.deleteTask($index)">&#10060;</button>
+	<button ng-click="Task.editTitle($index)">&#128394;</button>
+	<div class="task_blocks">
+		<div class="task_item">1</div>
+		<button ng-click="Task.add($index)">Добавить</button>
+	</div>
+</div>

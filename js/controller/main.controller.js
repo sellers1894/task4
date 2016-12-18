@@ -5,13 +5,12 @@
 	.module('app')
 	.controller('MainController', MainController);
 
-	function MainController(){
+	MainController.$inject = ['dataservice'];
+
+	function MainController(dataservice){
 		var vm = this;
 		vm.bla = 'hi';
-		vm.getBla = getBla;
-
-		function getBla(){
-			return "asd";
-		}
+		dataservice.onLoad();
+		console.log("main!");
 	}
 })();

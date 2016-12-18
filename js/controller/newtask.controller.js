@@ -5,13 +5,16 @@
 	.module('app.task')
 	.controller('NewTaskController', NewTaskController);
 
-	function NewTaskController(){
-		var vm = this;
-		vm.bla = 'hi';
-		vm.getBla = getBla;
+	NewTaskController.$inject = ['dataservice'];
 
-		function getBla(){
-			return "asd";
+	function NewTaskController(dataservice){
+		var vm = this;
+		vm.bla = 'hi0';
+		vm.addTask = addTask;
+
+		function addTask(){
+			console.log("addTaskCtrl");
+			dataservice.addTask();
 		}
 	}
 })();

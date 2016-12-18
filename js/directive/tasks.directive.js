@@ -9,7 +9,7 @@
 		return{
 			restrict: 'EA',
 			scope: true,
-			controllerAs: 'tasks',
+			controllerAs: 'Tasks',
 			controller: 'TasksController',
 			templateUrl: 'template/tasks.template.html'
 		};

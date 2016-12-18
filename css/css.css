@@ -9,6 +9,7 @@ body{
 
 #wrapper > main{
 	display: flex;
+	/*flex-wrap: wrap;*/
 }
 
 .task_container{
@@ -27,4 +28,24 @@ body{
 .new_task:hover{
 	background: #babdb6;
 	color: #555;
+}
+
+.task_container{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.task{
+	width: 15vw;
+	min-width: 150px;
+	/*padding: 0.5em;*/
+	margin: 0 0.5em 0.5em 0;
+	background: #babdb6;
+}
+.task > button{
+	float: right;
+}
+
+.task_blocks > button{
+	width: 100%;
 }
