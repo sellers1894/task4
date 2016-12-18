@@ -11,6 +11,7 @@
 		var vm = this;
 		vm.tasks = dataservice.getTasks();
 		vm.editTitle = editTitle;
+		vm.deleteTask = deleteTask;
 		vm.addItem = addItem;
 		vm.editItemTitle = editItemTitle;
 		vm.deleteItem = deleteItem;
@@ -21,6 +22,11 @@
 				vm.tasks.tasks[id].name = name;
 				dataservice.update();
 			}
+		}
+
+		function deleteTask(id){
+			vm.tasks.tasks.splice(id, 1);
+			dataservice.update();
 		}
 
 		function addItem(id){
