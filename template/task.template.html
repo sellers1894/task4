@@ -6,7 +6,7 @@
 	<hr>
 	<div class="task_blocks">
 		<div ng-repeat="task_item in task_block.items track by $index" class="task_item">
-			<button id="title">{{$index+1}}.&nbsp;{{task_item.name}}</button>
+			<a href="#openModal" ng-click="Task.viewItem($parent.$index, $index)" id="title">{{$index+1}}.&nbsp;{{task_item.name}}</a>
 			<button id="edit" ng-click="Task.editItemTitle($parent.$index, $index)">&#128394;</button>
 			<button id="delete" ng-click="Task.deleteItem($parent.$index, $index)">&#10060;</button>
 			<div class="clear"></div>

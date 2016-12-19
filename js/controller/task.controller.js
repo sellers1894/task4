@@ -5,9 +5,9 @@
 	.module('app')
 	.controller('TaskController', TaskController);
 
-	TaskController.$inject = ['dataservice'];
+	TaskController.$inject = ['dataservice', 'taskservice'];
 
-	function TaskController(dataservice){
+	function TaskController(dataservice, taskservice){
 		var vm = this;
 		vm.tasks = dataservice.getTasks();
 		vm.editTitle = editTitle;
@@ -15,6 +15,8 @@
 		vm.addItem = addItem;
 		vm.editItemTitle = editItemTitle;
 		vm.deleteItem = deleteItem;
+
+		vm.viewItem = viewItem;
 
 		function editTitle(id){
 			var name = prompt("Тест", vm.tasks.tasks[id].name);
@@ -50,6 +52,15 @@
 		function deleteItem(parent_id, id){
 			vm.tasks.tasks[parent_id].items.splice(id, 1);
 			dataservice.update();
+		}
+
+
+
+		function viewItem(parent_id, id){
+			taskservice.setCarrentTask(vm.tasks.tasks[parent_id]);
+			taskservice.setCarrentTask(vm.tasks.tasks[parent_id].items[id]);
+			console.log(taskservice.getCarrentTask());
+			console.log(vm.tasks.tasks[parent_id]);
 		}
 	}
 })();

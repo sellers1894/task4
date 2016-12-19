@@ -9,6 +9,22 @@ body{
 	clear:both;
 }
 
+button{
+	padding: 0.1em;
+	margin: 0.1em;
+	cursor: pointer;
+	background-color: #606061;
+	color: #FFFFFF;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	border: none;
+}
+button:hover{
+	background-color: #D3D3D3;
+	color: #000;
+}
+
 
 #wrapper > main{
 	display: flex;
@@ -65,10 +81,99 @@ body{
 }
 
 .task_item > #title{
+	display: inline-block;
 	width: 70%;
-	height: 1.5em;
+	height: 1.1em;
+	padding: 0.2em;
 	overflow: hidden;
+	border: 1px solid #777;
+	color: #000;
+	text-decoration: none;
 }
 .task_item > #delete, .task_item > #edit{
 	width: 15%;
+}
+
+
+
+
+
+.task_info {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	/*pointer-events: none;*/
+}
+
+
+
+
+.task_info:target {
+	display: block;
+	/*pointer-events: auto;*/
+}
+
+.task_info > div {
+	width: 75%;
+	max-width: 700px;
+	min-width: 300px;
+	/*height: 75%;*/
+	/*overflow: auto;*/
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	background: #fff;
+}
+
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	/*line-height: 25px;*/
+	position: absolute;
+	right: 0px;
+	text-align: center;
+	top: 0;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.close:hover { background: #00d9ff; }
+
+
+
+
+.task_info .block{
+	margin: 0.5em 0;
+	padding: 0.5em;
+	border: 1px solid #ccc;
+}
+
+.task_info .block header{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0.2em;
+	border-bottom: 1px solid #ccc;
+}
+
+.task_info .block > .checklist{
+	margin: 0.5em 0;
+	padding: 0.5em;
+	border: 1px solid #ccc;
+}
+
+.task_info .block > .checklist > .items{
+	margin-bottom: 0.5em;
+}
+
+.task_info .block > .checklist > .items textarea{
+	width: 100%;
+	max-width: 100%;
+	min-height: 50px;
 }
