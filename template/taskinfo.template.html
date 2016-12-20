@@ -44,30 +44,20 @@
 				</header>
 
 				<section class="items">
-					<textarea></textarea>
+					<input class="comment_title" type="text" ng-model="title" value="Коментарий">
+					<textarea ng-model="message"></textarea>
 				</section>
-				<button>Добавить Комент</button>
+				<button ng-click="TaskItem.addMessage(title, message)">Добавить Комент</button>
 			</div>
 
-			<div class="checklist">
+			<div ng-repeat="comment in TaskItem.carrentTask.data.comments track by $index" class="checklist">
 				<header>
-					<h4>Комент</h4>
-					<button>&#10060;</button>
+					<h4>{{comment.title}}</h4>
+					<button ng-click="TaskItem.deleteMessage($index)">&#10060;</button>
 				</header>
 
 				<section class="items">
-					<textarea></textarea>
-				</section>
-			</div>
-
-			<div class="checklist">
-				<header>
-					<h4>Комент</h4>
-					<button>&#10060;</button>
-				</header>
-
-				<section class="items">
-					<textarea></textarea>
+					<textarea disabled>{{comment.text}}</textarea>
 				</section>
 			</div>
 

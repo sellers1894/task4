@@ -21,6 +21,9 @@
 		vm.editCheckListItem = editCheckListItem;
 		vm.deleteCheckListItem = deleteCheckListItem;
 
+		vm.addMessage = addMessage;
+		vm.deleteMessage = deleteMessage;
+
 		vm.checkedListItem = checkedListItem;
 		vm.getPercentList = getPercentList;
 		vm.getPercentTask = getPercentTask;
@@ -97,6 +100,22 @@
 				sumCheckList += getPercentList(i);
 			});
 			return (sumCheckList/(checkList.length*100))*100;
+		}
+
+
+
+		function addMessage(title, text){
+			if (title && text){
+				vm.carrentTask.data.comments.push({
+					title: title,
+					text: text
+				});
+				dataservice.update();
+			}
+		}
+
+		function deleteMessage(index){
+			deleteObject(vm.carrentTask.data.comments, index);
 		}
 
 
