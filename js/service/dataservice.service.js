@@ -8,11 +8,14 @@
 
   function Dataservice($http, $q) {
     var isLoad = false;
-    var currentUserId = 1;
+    var idCurrentBoard = 0;
+    var boards;
     var tasks;
 
     var service = {
       onLoad: onLoad,
+      getBoards: getBoards,
+      addBoard: addBoard,
       getTasks: getTasks,
       update: update,
       addTask: addTask
@@ -22,18 +25,38 @@
     function onLoad(){
       // if (!isLoad){
         // isLoad = true;
+        boards = localStorage.getItem("boards");
+        if (!boards){
+          boards = {
+            board: []
+          };
+          localStorage.setItem("boards", JSON.stringify(boards));
+        }
+        else
+          boards = JSON.parse(boards);
+
         tasks = localStorage.getItem("tasks");
         if (!tasks){
           tasks = {
             tasks: []
           };
           localStorage.setItem("tasks", JSON.stringify(tasks));
-          console.log("new0");
         }
         else
           tasks = JSON.parse(tasks);
-        console.log("onLoad");
     // }
+  }
+
+  function getBoards(){
+    return boards;
+  }
+
+  function addBoard(){
+    boards.board.push({
+      name: "board " + (boards.board.length+1),
+      tasks: []
+    });
+    update();
   }
 
   function getTasks(){
@@ -41,6 +64,7 @@
   }
 
   function update(){
+    localStorage.setItem("boards", JSON.stringify(boards));
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
@@ -51,7 +75,6 @@
     });
     // localStorage.clear();
     update();
-    console.log("addTask");
   }
 }
 })();
