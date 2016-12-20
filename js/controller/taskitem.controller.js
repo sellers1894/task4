@@ -20,15 +20,19 @@
 		vm.addCheckListItem = addCheckListItem;
 		vm.editCheckListItem = editCheckListItem;
 		vm.deleteCheckListItem = deleteCheckListItem;
+
 		vm.checkedListItem = checkedListItem;
+		vm.getPercentList = getPercentList;
+		vm.getPercentTask = getPercentTask;
+
+		vm.editName = editName;
+		vm.deleteObject = deleteObject;
+
 
 		function editTaskName(){
-			var name = prompt("Название задания", vm.carrentTask.data.name);
-			if (name){
-				vm.carrentTask.data.name = name;
-				dataservice.update();
-			}
+			editName(vm.carrentTask.data, "Название задания");
 		}
+
 
 		function addCheckList(){
 			vm.carrentTask.data.checkList.push({
@@ -38,16 +42,12 @@
 			dataservice.update();
 		}
 		function editCheckList(index){
-			var name = prompt("Название задачи", vm.carrentTask.data.checkList[index].name);
-			if (name){
-				vm.carrentTask.data.checkList[index].name = name;
-				dataservice.update();
-			}
+			editName(vm.carrentTask.data.checkList[index], "Название задачи");
 		}
 		function deleteCheckList(index){
-			vm.carrentTask.data.checkList.splice(index, 1);
-			dataservice.update();
+			deleteObject(vm.carrentTask.data.checkList, index);
 		}
+
 
 		function addCheckListItem(index){
 			vm.carrentTask.data.checkList[index].items.push({
@@ -57,20 +57,61 @@
 			dataservice.update();
 		}
 		function editCheckListItem(parent, index){
-			var item = vm.carrentTask.data.checkList[parent].items[index];
-			var name = prompt("Название задачи", item.name);
-			if (name){
-				item.name = name;
-				dataservice.update();
-			}
+			editName(vm.carrentTask.data.checkList[parent].items[index], "Название задачи");
 		}
 		function deleteCheckListItem(parent, index){
-			vm.carrentTask.data.checkList[parent].items.splice(index, 1);
-			dataservice.update();
+			deleteObject(vm.carrentTask.data.checkList[parent].items, index);
 		}
+
+
+
 		function checkedListItem(parent, index){
 			var item = vm.carrentTask.data.checkList[parent].items[index];
 			item.checked = !item.checked;
+			dataservice.update();
+		}
+
+		function getPercentList(index){
+			var trueItem = 0;
+			var items = vm.carrentTask.data.checkList[index].items;
+
+			if (!items.length)
+				return 100;
+
+			items.forEach(function(item) {
+				if (item.checked){
+					trueItem++;
+				}
+			});
+			return (trueItem/items.length)*100;
+		}
+
+		function getPercentTask(){
+			var sumCheckList = 0;
+			var checkList = vm.carrentTask.data.checkList;
+
+			if (!checkList || !checkList.length)
+				return 100;
+
+			checkList.forEach(function(item, i) {
+				sumCheckList += getPercentList(i);
+			});
+			return (sumCheckList/(checkList.length*100))*100;
+		}
+
+
+
+
+
+		function editName(object, title){
+			var name = prompt(title, object.name);
+			if (name){
+				object.name = name;
+				dataservice.update();
+			}
+		}
+		function deleteObject(object, index){
+			object.splice(index, 1);
 			dataservice.update();
 		}
 

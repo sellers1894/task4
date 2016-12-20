@@ -5,11 +5,11 @@
 		<button ng-click="TaskItem.editTaskName()">&#128394;</button>
 		<div class="block">
 			<header>
-				<h3>CheckList</h3>
+				<h3>CheckList. Выполнен на {{TaskItem.getPercentTask()}}%</h3>
 			</header>
 			<div ng-repeat="checkList in TaskItem.carrentTask.data.checkList track by $index" class="checklist">
 				<header>
-					<h4>{{checkList.name}} 10%</h4>
+					<h4>{{checkList.name}} {{TaskItem.getPercentList($index)}}%</h4>
 					<div>
 						<button ng-click="TaskItem.editCheckList($index)">&#128394;</button>
 						<button ng-click="TaskItem.deleteCheckList($index)">&#10060;</button>
