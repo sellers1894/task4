@@ -1,8 +1,11 @@
 <div id="boards">
 	<div ng-repeat="board in Board.boards.board track by $index" class="board">
-		<a title="Выбрать">{{board.name}}</a>
+		<a ng-click="Board.checkBoard($index)" title="Выбрать">{{board.name}}</a>
 		<button ng-click="Board.editBoard($index)">&#128394;</button>
-		<button>&#10060;</button>
+		<button ng-click="Board.deleteBoard($index)">&#10060;</button>
 	</div>
 	<button ng-click="Board.addBoard()" class="add_board">Добавить доску</button>
+	<div id="currentBoard">
+		<p>Текущая доска: <i>{{Board.getCurrentBoardName()}}</i></p>
+	</div>
 </div>

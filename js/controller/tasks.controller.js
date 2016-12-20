@@ -9,6 +9,7 @@
 
 	function TasksController(dataservice){
 		var vm = this;
+		vm.bla = dataservice.getTasks();
 		vm.tasks = dataservice.getTasks();
 		console.log(vm.tasks);
 	}

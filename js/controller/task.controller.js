@@ -19,21 +19,22 @@
 		vm.viewItem = viewItem;
 
 		function editTitle(id){
-			var name = prompt("Тест", vm.tasks.tasks[id].name);
+			console.log(vm.tasks);
+			var name = prompt("Тест", vm.tasks.data[id].name);
 			if (name){
-				vm.tasks.tasks[id].name = name;
+				vm.tasks.data[id].name = name;
 				dataservice.update();
 			}
 		}
 
 		function deleteTask(id){
-			vm.tasks.tasks.splice(id, 1);
+			vm.tasks.data.splice(id, 1);
 			dataservice.update();
 		}
 
 		function addItem(id){
-			vm.tasks.tasks[id].items.push({
-				name: "item "+(vm.tasks.tasks[id].items.length+1),
+			vm.tasks.data[id].items.push({
+				name: "item "+(vm.tasks.data[id].items.length+1),
 				comments: [],
 				checkList: []
 			});
@@ -42,23 +43,23 @@
 		}
 
 		function editItemTitle(parent_id, id){
-			var name = prompt("Тест", vm.tasks.tasks[parent_id].items[id].name);
+			var name = prompt("Тест", vm.tasks.data[parent_id].items[id].name);
 			if (name){
-				vm.tasks.tasks[parent_id].items[id].name = name;
+				vm.tasks.data[parent_id].items[id].name = name;
 				dataservice.update();
 			}
 		}
 
 		function deleteItem(parent_id, id){
-			vm.tasks.tasks[parent_id].items.splice(id, 1);
+			vm.tasks.data[parent_id].items.splice(id, 1);
 			dataservice.update();
 		}
 
 
 
 		function viewItem(parent_id, id){
-			taskservice.setCarrentTask(vm.tasks.tasks[parent_id]);
-			taskservice.setCarrentTask(vm.tasks.tasks[parent_id].items[id]);
+			taskservice.setCarrentTask(vm.tasks.data[parent_id]);
+			taskservice.setCarrentTask(vm.tasks.data[parent_id].items[id]);
 		}
 	}
 })();
