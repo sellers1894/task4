@@ -1,63 +1,35 @@
 <div id="openModal" class="task_info">
 	<div>
 		<a href="#close" title="Закрыть" class="close">&#10060;</a>
-		<span>{{TaskItem.carrentTask.data.name}}dsfd</span>
-		<button ng-click="TaskItem.bla()">&#128394;</button>
+		<span>{{TaskItem.carrentTask.data.name}}</span>
+		<button ng-click="TaskItem.editTaskName()">&#128394;</button>
 		<div class="block">
 			<header>
 				<h3>CheckList</h3>
-				<button>&#10060;</button>
 			</header>
-			<div class="checklist">
+			<div ng-repeat="checkList in TaskItem.carrentTask.data.checkList track by $index" class="checklist">
 				<header>
-					<h4>CheckListName 10%</h4>
-					<button>&#10060;</button>
+					<h4>{{checkList.name}} 10%</h4>
+					<div>
+						<button ng-click="TaskItem.editCheckList($index)">&#128394;</button>
+						<button ng-click="TaskItem.deleteCheckList($index)">&#10060;</button>
+					</div>
 				</header>
 
-				<section class="items">
+				<section ng-repeat="checkItem in checkList.items track by $index" class="items">
 					<div class="item">
-						<input type="checkbox" id="che" name="che"> <label for="che">bla</label>
-						<button>&#10060;</button>
+					<ng-bind></ng-bind>
+						<span>{{checkItem.checked | checktask}} </span><a ng-click="TaskItem.checkedListItem($parent.$index, $index)" title="кликни">{{checkItem.name}}</a>
+						<button ng-click="TaskItem.editCheckListItem($parent.$index, $index)">&#128394;</button>
+						<button ng-click="TaskItem.deleteCheckListItem($parent.$index, $index)">&#10060;</button>
 					</div>
-					<div class="item">
-						<input type="checkbox" id="che" name="che"> <label for="che">bla</label>
-						<button>&#10060;</button>
-					</div>
-					<div class="item">
-						<input type="checkbox" id="che" name="che"> <label for="che">bla</label>
-						<button>&#10060;</button>
-					</div>
-
 				</section>
-				<button>Добавить Задачу</button>
-			</div>
-
-			<div class="checklist">
-				<header>
-					<h4>CheckListName 10%</h4>
-					<button>&#10060;</button>
-				</header>
-
-				<section class="items">
-					<div class="item">
-						<input type="checkbox" id="che" name="che"> <label for="che">bla</label>
-						<button>&#10060;</button>
-					</div>
-					<div class="item">
-						<input type="checkbox" id="che" name="che"> <label for="che">bla</label>
-						<button>&#10060;</button>
-					</div>
-					<div class="item">
-						<input type="checkbox" id="che" name="che"> <label for="che">bla</label>
-						<button>&#10060;</button>
-					</div>
-
-				</section>
-				<button>Добавить Задачу</button>
+				<button ng-click="TaskItem.addCheckListItem($index)">Добавить Задачу</button>
 			</div>
 
 
-			<button>Добавить Check</button>
+
+			<button ng-click="TaskItem.addCheckList()">Добавить Check</button>
 		</div>
 
 

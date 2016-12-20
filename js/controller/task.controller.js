@@ -59,8 +59,6 @@
 		function viewItem(parent_id, id){
 			taskservice.setCarrentTask(vm.tasks.tasks[parent_id]);
 			taskservice.setCarrentTask(vm.tasks.tasks[parent_id].items[id]);
-			console.log(taskservice.getCarrentTask());
-			console.log(vm.tasks.tasks[parent_id]);
 		}
 	}
 })();
