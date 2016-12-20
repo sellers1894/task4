@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-	.module('app')
+	.module('app.task')
 	.controller('TaskController', TaskController);
 
 	TaskController.$inject = ['dataservice', 'taskservice'];
@@ -19,7 +19,6 @@
 		vm.viewItem = viewItem;
 
 		function editTitle(id){
-			console.log(vm.tasks);
 			var name = prompt("Тест", vm.tasks.data[id].name);
 			if (name){
 				vm.tasks.data[id].name = name;
@@ -39,7 +38,6 @@
 				checkList: []
 			});
 			dataservice.update();
-			console.log(vm.tasks);
 		}
 
 		function editItemTitle(parent_id, id){

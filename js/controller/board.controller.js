@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-	.module('app')
+	.module('app.board')
 	.controller('BoardController', BoardController);
 
 	BoardController.$inject = ['dataservice', 'taskservice'];

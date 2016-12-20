@@ -9,8 +9,6 @@
 
 	function MainController(dataservice){
 		var vm = this;
-		vm.bla = 'hi';
 		dataservice.onLoad();
-		console.log("main!");
 	}
 })();
